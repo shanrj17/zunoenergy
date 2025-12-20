@@ -10,9 +10,9 @@ import { FAQ } from "@/components/home/FAQ"
 import { FinalCTA } from "@/components/home/FinalCTA"
 import { ClosingSlogan } from "@/components/home/ClosingSlogan"
 
-export default async function Home({ params }: { params: Promise<{ lang: "en" | "es" }> }) {
+export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
-  const dict = await getDictionary(lang)
+  const dict = await getDictionary(lang as "en" | "es")
 
   return (
     <div className="flex flex-col min-h-screen">
