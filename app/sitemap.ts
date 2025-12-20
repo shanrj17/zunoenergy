@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://zunoenergy.com' // Using placeholder production URL as requested
+    const baseUrl = 'https://www.zunoenergy.com'
 
     // Base routes that exist in both languages
     const routes = [

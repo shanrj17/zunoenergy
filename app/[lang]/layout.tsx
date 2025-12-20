@@ -28,6 +28,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     description: lang === "es"
       ? "Calcule sus ahorros de energía, estime el retorno de inversión solar y obtenga consejos personalizados para reducir su huella de carbono."
       : "Calculate your energy savings, estimate solar ROI, and get personalized tips to reduce your carbon footprint.",
+    metadataBase: new URL("https://www.zunoenergy.com"),
+    alternates: {
+      canonical: `/${lang}`,
+      languages: {
+        'en': '/en',
+        'es': '/es',
+      },
+    },
   };
 }
 
