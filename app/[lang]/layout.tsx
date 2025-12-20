@@ -61,7 +61,10 @@ export default async function RootLayout({
         <Header lang={lang} dict={dict.header} />
         <main className="flex-1">{children}</main>
         <Footer lang={lang} dict={dict.common} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
       </body>
     </html>
   );
 }
+
+import { GoogleAnalytics } from '@next/third-parties/google'

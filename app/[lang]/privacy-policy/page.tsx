@@ -47,8 +47,16 @@ export default function PrivacyPolicyPage() {
                     <section>
                         <h2 className="text-xl font-bold text-gray-900 mb-4">4. Cookies & Analytics</h2>
                         <p>
-                            We may use minimal, privacy-respecting analytics tools to understand site traffic. These tools are designed to avoid collecting personally identifiable information. We avoid using third-party advertising trackers that follow you across the web.
+                            We use <strong>Google Analytics 4 (GA4)</strong> to understand website traffic and usage patterns (e.g., preventing errors, improving page speed). This data is collected in an aggregated, anonymized format.
                         </p>
+                        <p className="mt-2">
+                            We have configured these tools to <strong>respect your privacy</strong>:
+                        </p>
+                        <ul className="list-disc pl-5 space-y-2 mt-2">
+                            <li>IP anonymization is enabled.</li>
+                            <li>Advertising features and cross-site tracking are disabled.</li>
+                            <li>We do not share this data with third-party ad networks.</li>
+                        </ul>
                     </section>
 
                     <section>

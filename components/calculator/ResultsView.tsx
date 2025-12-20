@@ -36,10 +36,25 @@ export function ResultsView({ results, inputs, onReset }: ResultsViewProps) {
         fetchInsights()
     }, [inputs])
 
-    const handleEmailSubmit = (e: React.FormEvent) => {
+    const handleEmailSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         if (email) {
-            // Log to localStorage as requested
+            try {
+                // Send to API
+                await fetch('/api/calculator-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        savings: results.annualSavings,
+                        state: inputs.state
+                    })
+                })
+            } catch (err) {
+                console.error("Failed to sync lead", err)
+            }
+
+            // Log to localStorage as requested for backup
             const logData = {
                 email,
                 date: new Date().toISOString(),
