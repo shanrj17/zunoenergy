@@ -32,16 +32,22 @@ export async function POST(request: Request) {
             `
         });
 
-        // Log for debug (server-side only)
-        console.log("Email sent successfully via Resend to INFO@ZUNOENERGY.COM")
-
+        console.log("Email sent successfully via Resend to", process.env.ADMIN_EMAIL)
         return NextResponse.json({ success: true })
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error sending contact email:", error)
-        // Return 200 to user to not break UX, but log error
-        // Or return 500 if strict
+
+        // DEBUG: Check if vars are loaded
+        const hasKey = !!process.env.RESEND_API_KEY
+        const hasEmail = !!process.env.ADMIN_EMAIL
+        console.log(`Debug status - Key: ${hasKey}, Email: ${hasEmail}`)
+
+        // Return specific error to client for debugging
         return NextResponse.json(
-            { error: "Failed to send message" },
+            {
+                error: error.message || "Failed to send message",
+                debug: { hasKey, hasEmail }
+            },
             { status: 500 }
         )
     }
