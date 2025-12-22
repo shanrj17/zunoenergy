@@ -18,8 +18,8 @@ export async function POST(request: Request) {
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         await resend.emails.send({
-            from: 'ZunoEnergy Contact <no-reply@zunoenergy.com>', // Ensure this domain is verified in Resend
-            to: 'INFO@ZUNOENERGY.COM', // Replace with site owner email env var if preferred
+            from: 'onboarding@resend.dev', // Default testing domain that always works
+            to: process.env.ADMIN_EMAIL as string, // Your personal Gmail (configured in Vercel)
             subject: 'New Contact Message — ZunoEnergy',
             html: `
                 <h2>New Contact Form Submission</h2>

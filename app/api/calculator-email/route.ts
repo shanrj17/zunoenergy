@@ -16,8 +16,8 @@ export async function POST(request: Request) {
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         await resend.emails.send({
-            from: 'ZunoEnergy Calculator <no-reply@zunoenergy.com>',
-            to: 'INFO@ZUNOENERGY.COM',
+            from: 'onboarding@resend.dev',
+            to: process.env.ADMIN_EMAIL as string,
             subject: 'New Free Plan Request — ZunoEnergy',
             html: `
                 <h2>New Calculator Lead</h2>
