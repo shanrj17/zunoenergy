@@ -34,20 +34,10 @@ export async function POST(request: Request) {
 
         console.log("Email sent successfully via Resend to", process.env.ADMIN_EMAIL)
         return NextResponse.json({ success: true })
-    } catch (error: any) {
+    } catch (error) {
         console.error("Error sending contact email:", error)
-
-        // DEBUG: Check if vars are loaded
-        const hasKey = !!process.env.RESEND_API_KEY
-        const hasEmail = !!process.env.ADMIN_EMAIL
-        console.log(`Debug status - Key: ${hasKey}, Email: ${hasEmail}`)
-
-        // Return specific error to client for debugging
         return NextResponse.json(
-            {
-                error: error.message || "Failed to send message",
-                debug: { hasKey, hasEmail }
-            },
+            { error: "Failed to send message" },
             { status: 500 }
         )
     }
