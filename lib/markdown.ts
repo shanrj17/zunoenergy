@@ -1,8 +1,14 @@
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
-import { remark } from "remark"
-import html from "remark-html"
+import { unified } from "unified"
+import remarkParse from "remark-parse"
+import remarkRehype from "remark-rehype"
+import rehypeSlug from "rehype-slug"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeStringify from "rehype-stringify"
+// @ts-ignore
+import rehypeAddClasses from 'rehype-add-classes'
 
 const contentDirectory = path.join(process.cwd(), "content/learn")
 
@@ -12,6 +18,7 @@ export interface Post {
     description: string
     date: string
     category: string
+    image?: string
     contentHtml?: string
     content?: string
 }
@@ -64,7 +71,30 @@ export function getAllPosts(category: string, fields: string[] = []): Post[] {
     return posts
 }
 
+
+
 export async function markdownToHtml(markdown: string) {
-    const result = await remark().use(html).process(markdown)
+    const result = await unified()
+        .use(remarkParse)
+        .use(remarkRehype)
+        .use(rehypeSlug as any)
+        // @ts-ignore
+        .use(rehypeAddClasses, {
+            h2: 'editorial-h2'
+        })
+        .use(rehypeAutolinkHeadings as any, {
+            behavior: 'wrap'
+        })
+        .use(rehypeStringify)
+        .process(markdown)
     return result.toString()
+}
+
+export async function getHeadings(markdown: string) {
+    const headingLines = markdown.split('\n').filter(line => line.match(/^##\s/))
+    return headingLines.map(raw => {
+        const text = raw.replace(/^##\s/, '').trim()
+        const slug = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
+        return { text, slug }
+    })
 }
