@@ -58,6 +58,10 @@ export function SmartEnergyCheckup() {
                             </div>
                         </div>
 
+                        <p className="text-sm text-muted-foreground text-center mb-6">
+                            No signup required. You can see your results before we ever ask for an email.
+                        </p>
+
                         {step === 1 && (
                             <Step1Location
                                 data={formData}

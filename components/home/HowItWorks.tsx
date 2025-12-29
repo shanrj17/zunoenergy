@@ -11,6 +11,8 @@ export function HowItWorks() {
                     </h2>
                     <p className="mt-4 text-lg text-gray-600">
                         No complex audits. No sales calls. Just the data you need.
+                        <br />
+                        ZunoEnergy exists to explain energy use clearly — not to sell products or services.
                     </p>
                 </div>
 
