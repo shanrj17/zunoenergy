@@ -8,6 +8,7 @@ import { useState } from "react"
 
 import { generateEnergyInsights } from "@/app/actions"
 import { useEffect } from "react"
+import confetti from "canvas-confetti"
 
 interface ResultsViewProps {
     results: CalculationResult
@@ -19,6 +20,16 @@ export function ResultsView({ results, inputs, onReset }: ResultsViewProps) {
     const [email, setEmail] = useState("")
     const [emailSent, setEmailSent] = useState(false)
     const [insights, setInsights] = useState<string[]>([])
+
+    useEffect(() => {
+        if (results.annualSavings > 0) {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            })
+        }
+    }, [results.annualSavings])
 
     useEffect(() => {
         const fetchInsights = async () => {

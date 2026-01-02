@@ -17,13 +17,13 @@ export function Hero({ dict }: { dict: any }) {
                 </div>
                 <div className="text-center">
                     <h1 className="mx-auto max-w-[900px] text-4xl font-bold text-gray-900 sm:text-[52px] leading-[1.15] drop-shadow-sm">
-                        {dict?.heroTitle}
+                        The #1 Free Home Energy Audit for US Homeowners
                     </h1>
                     <p className="mt-3 text-sm text-gray-500 font-medium">
                         ZunoEnergy is educational only. We don’t sell solar or energy services.
                     </p>
                     <p className="mx-auto mt-6 max-w-[760px] text-[18px] leading-[1.6] text-gray-600">
-                        {dict?.heroSubtitle}
+                        Stop overpaying. Compare your bill against <span className="font-semibold text-green-700">US National Averages</span> and find savings in your state.
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <Link

@@ -13,13 +13,13 @@ function getLocale(request: NextRequest): string | undefined {
     const locales: string[] = i18n.locales as unknown as string[]
 
     // Use negotiator and intl-localematcher to get best locale
-    let languages = new Negotiator({ headers: negotiatorHeaders }).languages(
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages(
         locales
     )
 
     try {
         return matchLocale(languages, locales, i18n.defaultLocale)
-    } catch (e) {
+    } catch {
         return i18n.defaultLocale
     }
 }
@@ -63,5 +63,5 @@ export function middleware(request: NextRequest) {
 
 export const config = {
     // Matcher ignoring `/_next/` and `/api/`
-    matcher: ['/((?!api|_next/static|_next/image|dashboard|favicon.ico|images).*)'],
+    matcher: ['/((?!api|_next/static|_next/image|dashboard|favicon.ico|images|assets).*)'],
 }

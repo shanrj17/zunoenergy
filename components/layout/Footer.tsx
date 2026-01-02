@@ -7,7 +7,7 @@ export function Footer({ lang, dict }: { lang: string, dict: any }) {
     return (
         <footer className="bg-gray-50 border-t border-gray-100 pt-16 pb-12">
             <div className="max-w-[1240px] mx-auto px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-16">
                     {/* COLUMN 1: BRAND */}
                     <div className="space-y-4">
                         <Link href={getLink('/')} className="flex items-center gap-2 group mb-4">
@@ -63,6 +63,17 @@ export function Footer({ lang, dict }: { lang: string, dict: any }) {
                             <li>
                                 <span className="text-gray-400 cursor-not-allowed">Smart Home Basics (Soon)</span>
                             </li>
+                        </ul>
+                    </div>
+
+                    {/* COLUMN 3.5: POPULAR CITIES (SEO) */}
+                    <div>
+                        <h3 className="font-semibold text-gray-900 mb-4">Popular Cities</h3>
+                        <ul className="space-y-3 text-sm text-gray-600">
+                            <li><Link href={getLink('/states/texas/houston')} className="hover:text-green-700 transition-colors">Houston Electric Bill</Link></li>
+                            <li><Link href={getLink('/states/california/los-angeles')} className="hover:text-green-700 transition-colors">Los Angeles Rates</Link></li>
+                            <li><Link href={getLink('/states/new-york/new-york-city')} className="hover:text-green-700 transition-colors">NYC Energy Audit</Link></li>
+                            <li><Link href={getLink('/states/illinois/chicago')} className="hover:text-green-700 transition-colors">Chicago Savings</Link></li>
                         </ul>
                     </div>
 

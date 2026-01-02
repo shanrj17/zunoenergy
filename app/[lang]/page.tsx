@@ -1,5 +1,5 @@
 import { getDictionary } from "@/lib/dictionary"
-import { Hero } from "@/components/home/Hero"
+import { InteractiveHero } from "@/components/home/InteractiveHero"
 import { TrustSignal } from "@/components/home/TrustSignal"
 import { ComparisonSection } from "@/components/home/ComparisonSection"
 import { HowItWorks } from "@/components/home/HowItWorks"
@@ -16,7 +16,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Hero dict={dict.home} />
+      <InteractiveHero />
       <TrustSignal />
       <ComparisonSection />
       <HowItWorks />

@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowRight, Leaf, Shield, Zap, TrendingUp, Home, DollarSign } from "lucide-react"
 import { getStateBySlug, getStateIncentives, STATES_LIST } from "@/lib/states-data"
 import { Button } from "@/components/ui/Button"
+import { CITIES_LIST } from "@/lib/cities-data"
 
 // Mock monthly usage for estimation (900 kWh is roughly US avg)
 const AVG_MONTHLY_KWH = 900
@@ -115,6 +116,26 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             </li>
                         ))}
                     </ul>
+                </div>
+            </section>
+
+            {/* SECTION: TOP CITIES */}
+            <section className="py-12 px-6 lg:px-8 max-w-[900px] mx-auto border-b border-gray-100 mb-12">
+                <h3 className="text-xl font-bold text-gray-900 mb-6">Compare Electric Rates in {stateData.name} Cities</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    {stateData.slug in CITIES_LIST ? (
+                        CITIES_LIST[stateData.slug].map((city) => (
+                            <Link
+                                key={city.slug}
+                                href={`/states/${stateData.slug}/${city.slug}`}
+                                className="text-sm text-gray-600 hover:text-green-700 hover:underline decoration-green-500/30"
+                            >
+                                {city.name}
+                            </Link>
+                        ))
+                    ) : (
+                        <p className="col-span-full text-sm text-gray-400 italic">City data coming soon for {stateData.name}...</p>
+                    )}
                 </div>
             </section>
 

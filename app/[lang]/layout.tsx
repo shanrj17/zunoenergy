@@ -23,11 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
   return {
     title: lang === "es"
-      ? "EnergySaver Pro | Plataforma Avanzada de Ahorro de Energía"
-      : "EnergySaver Pro | Advanced Energy Savings Platform",
+      ? "Calculadora de Factura Eléctrica de EE. UU. y Auditoría Energética"
+      : "US Electric Bill Calculator & Home Energy Audit | ZunoEnergy",
     description: lang === "es"
-      ? "Calcule sus ahorros de energía, estime el retorno de inversión solar y obtenga consejos personalizados para reducir su huella de carbono."
-      : "Calculate your energy savings, estimate solar ROI, and get personalized tips to reduce your carbon footprint.",
+      ? "Auditoría energética gratuita para el hogar en EE. UU. Calcule su factura eléctrica, compare con promedios nacionales y encuentre ahorros en su estado."
+      : "Free US home energy audit tool. Calculate your electric bill, compare against national averages, and find savings in your state. No signup required.",
     metadataBase: new URL("https://www.zunoenergy.com"),
     alternates: {
       canonical: `/${lang}`,
@@ -53,11 +53,29 @@ export default async function RootLayout({
   const { lang } = await params;
   const dict = await getDictionary(lang as "en" | "es");
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ZunoEnergy Electric Bill Calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Free tool to calculate electric bill savings and perform a home energy audit using US Department of Energy data."
+  };
+
   return (
     <html lang={lang} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-white text-gray-900`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Header lang={lang} dict={dict.header} />
         <main className="flex-1">{children}</main>
         <Footer lang={lang} dict={dict.common} />

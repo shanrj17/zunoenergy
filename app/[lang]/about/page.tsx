@@ -171,16 +171,24 @@ export default function AboutPage() {
             {/* SECTION 9: FOUNDER SIGNATURE BLOCK */}
             <section className="py-24 max-w-[720px] mx-auto px-6 lg:px-8">
                 <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/50 text-center sm:text-left flex flex-col sm:flex-row items-center gap-8">
-                    <div className="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
-                        <User className="h-10 w-10 text-gray-400" />
+                    <div className="h-20 w-20 bg-green-100 rounded-full flex items-center justify-center shrink-0 border-4 border-white shadow-sm font-bold text-2xl text-green-700">
+                        Z
                     </div>
-                    <div>
-                        <p className="text-gray-600 italic text-lg mb-6">
-                            "Thank you for trusting ZunoEnergy with your home’s data. I hope it helps you make your home more comfortable and affordable."
+                    <div className="flex-1">
+                        <p className="text-gray-600 italic text-lg mb-6 font-serif relative">
+                            <span className="text-4xl text-green-200 absolute -top-4 -left-2">"</span>
+                            Thank you for trusting ZunoEnergy with your home’s data. I hope it helps you make your home more comfortable and affordable.
                         </p>
-                        <div>
-                            <div className="font-bold text-gray-900 text-lg">The Independent Founder</div>
-                            <div className="text-green-600">Creator of ZunoEnergy</div>
+                        <div className="flex items-center justify-center sm:justify-start gap-4">
+                            <div>
+                                <div className="font-bold text-gray-900 text-lg">The Independent Founder</div>
+                                <div className="text-green-600 uppercase tracking-wider text-xs font-bold mt-1">Creator of ZunoEnergy</div>
+                            </div>
+                            {/* SVG Signature */}
+                            <svg className="h-12 w-32 text-gray-400 opacity-60 ml-4" viewBox="0 0 200 60" fill="none" stroke="currentColor">
+                                <path d="M10,40 Q50,10 80,40 T150,40" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M10,40 Q50,70 80,40" strokeWidth="1.5" strokeLinecap="round" />
+                            </svg>
                         </div>
                     </div>
                 </div>

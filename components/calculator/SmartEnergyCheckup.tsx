@@ -8,13 +8,18 @@ import { Step3SmartMoves } from "./steps/Step3SmartMoves"
 import { ResultsView } from "./ResultsView"
 import { Card, CardContent } from "@/components/ui/Card"
 
+import { useSearchParams } from "next/navigation"
+
 export function SmartEnergyCheckup() {
+    const searchParams = useSearchParams()
     const [step, setStep] = useState(1)
     const [formData, setFormData] = useState<Partial<CalculatorInputs>>({
         hoursPerDay: 6,
         occupants: 2,
         sqFt: 1500,
         selectedMoves: [],
+        zip: searchParams.get('zip') || "",
+        state: searchParams.get('state') || "",
     })
     const [results, setResults] = useState<CalculationResult | null>(null)
 
