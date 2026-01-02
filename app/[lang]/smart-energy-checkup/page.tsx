@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { SmartEnergyCheckup } from "@/components/calculator/SmartEnergyCheckup"
 
 export default function Page() {
@@ -11,7 +12,9 @@ export default function Page() {
                     A smart, honest energy guide for American homes. Get a personalized savings estimate in 3 simple steps.
                 </p>
             </div>
-            <SmartEnergyCheckup />
+            <Suspense fallback={<div className="text-center py-20">Loading calculator...</div>}>
+                <SmartEnergyCheckup />
+            </Suspense>
         </div>
     )
 }

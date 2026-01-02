@@ -1,5 +1,6 @@
 "use client"
 
+import { Suspense } from "react"
 import { SmartEnergyCheckup } from "@/components/calculator/SmartEnergyCheckup"
 
 export default function CalculatorPage() {
@@ -17,7 +18,9 @@ export default function CalculatorPage() {
             </div>
 
             {/* Main Tool */}
-            <SmartEnergyCheckup />
+            <Suspense fallback={<div className="text-center py-20">Loading...</div>}>
+                <SmartEnergyCheckup />
+            </Suspense>
 
             {/* SEO & Trust Content */}
             <div className="mt-24 max-w-4xl w-full grid gap-16">
