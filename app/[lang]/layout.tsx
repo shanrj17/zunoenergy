@@ -29,12 +29,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       ? "Auditoría energética gratuita para el hogar en EE. UU. Calcule su factura eléctrica, compare con promedios nacionales y encuentre ahorros en su estado."
       : "Free US home energy audit tool. Calculate your electric bill, compare against national averages, and find savings in your state. No signup required.",
     metadataBase: new URL("https://www.zunoenergy.com"),
-    alternates: {
-      canonical: `/${lang}`,
-      languages: {
-        'en': '/en',
-        'es': '/es',
-      },
+    robots: {
+      index: lang === 'en',
+      follow: lang === 'en',
     },
   };
 }

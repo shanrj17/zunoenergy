@@ -18,6 +18,9 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     return {
         title: `${stateData.name} Energy Guide | Costs & Incentives`,
         description: `Compare energy rates, find incentives, and estimate savings for homes in ${stateData.name}.`,
+        alternates: {
+            canonical: `/states/${state}`,
+        },
     }
 }
 

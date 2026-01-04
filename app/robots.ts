@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/api/', '/admin/'],
         },
-        sitemap: 'https://www.zunoenergy.com/sitemap.xml',
+        sitemap: 'https://www.zunoenergy.com/sitemap_index.xml',
     }
 }

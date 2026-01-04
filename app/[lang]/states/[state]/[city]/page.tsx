@@ -19,6 +19,8 @@ function getCityData(stateData: any, cityData: any) {
     }
 }
 
+import { isCityIndexable } from "@/lib/city-rollout"
+
 export async function generateMetadata({ params }: { params: Promise<{ state: string, city: string }> }) {
     const { state, city } = await params
     const stateData = getStateBySlug(state)
@@ -26,9 +28,18 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
 
     if (!stateData || !cityData) return { title: "City Not Found" }
 
+    const shouldIndex = isCityIndexable(city)
+
     return {
         title: `Average Electric Bill in ${cityData.name}, ${stateData.code} | Calculator`,
         description: `Compare ${cityData.name} electric rates against the ${stateData.name} average. Calculate your home energy costs and find savings in ${cityData.name}.`,
+        robots: {
+            index: shouldIndex,
+            follow: shouldIndex,
+        },
+        alternates: {
+            canonical: `/states/${state}/${city}`,
+        },
     }
 }
 
