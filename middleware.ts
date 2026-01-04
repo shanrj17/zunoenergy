@@ -42,8 +42,9 @@ export function middleware(request: NextRequest) {
             pathname.startsWith('/manifest.ts') ||
             pathname.startsWith('/next.svg') ||
             pathname.startsWith('/vercel.svg') ||
-            pathname.startsWith('/sitemap.xml') ||
-            pathname.startsWith('/robots.txt')
+            pathname.startsWith('/robots.txt') ||
+            pathname.includes('sitemap') ||
+            pathname.endsWith('.xml')
         ) {
             return
         }
