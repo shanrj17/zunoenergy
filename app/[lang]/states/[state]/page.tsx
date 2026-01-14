@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const stateData = getStateBySlug(state)
     if (!stateData) return { title: "State Not Found" }
     return {
-        title: `${stateData.name} Energy Guide | Costs & Incentives`,
-        description: `Compare energy rates, find incentives, and estimate savings for homes in ${stateData.name}.`,
+        title: `Average Electric Bill in ${stateData.name} — Why Costs Vary 2024`,
+        description: `Understand why electric bills vary in ${stateData.name}. Local utility rates, climate factors, and home efficiency explained in a clear, educational guide.`,
         alternates: {
             canonical: `/states/${state}`,
         },
@@ -49,7 +49,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     </div>
                     <h1 className="mx-auto max-w-[900px] text-4xl font-bold text-gray-900 sm:text-[52px] leading-[1.15]">
                         {stateData.name} Home Energy <br className="hidden sm:block" />
-                        <span className="text-green-700">Costs & Savings Guide</span>
+                        <span className="text-green-700">Costs & Efficiency Guide</span>
                     </h1>
                     <p className="mx-auto mt-6 max-w-[760px] text-[18px] leading-[1.6] text-gray-600">
                         Local energy costs, incentives, and savings insights for homeowners in {stateData.name}.
@@ -103,6 +103,38 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                         ? " In this region, air conditioning is often the largest single power consumer."
                         : " In this climate, heating during winter months can significantly spike usage."}
                 </p>
+
+                {/* STATE SPECIFIC DEEP DIVE (EEAT) */}
+                {stateData.slug === 'texas' && (
+                    <div className="mt-8 bg-slate-50 p-6 rounded-2xl border border-slate-100 text-left max-w-[800px] mx-auto">
+                        <h3 className="font-bold text-gray-900 mb-3 text-lg">What This Means for a Typical Texas Home</h3>
+                        <p className="text-gray-600 leading-relaxed mb-4">
+                            In Texas, the combination of extreme summer heat and older housing stock often leads to massive energy leakage.
+                            Air conditioning units run longer and harder to compensate for poor insulation.
+                            Additionally, "Power to Choose" plans can be confusing, causing many to overpay on rates.
+                        </p>
+                        <p className="text-sm font-semibold text-green-700">
+                            <Link href="/calculator?state=texas" className="hover:underline">
+                                See how this compares to a typical Texas home →
+                            </Link>
+                        </p>
+                    </div>
+                )}
+
+                {stateData.slug === 'florida' && (
+                    <div className="mt-8 bg-slate-50 p-6 rounded-2xl border border-slate-100 text-left max-w-[800px] mx-auto">
+                        <h3 className="font-bold text-gray-900 mb-3 text-lg">What This Means for a Typical Florida Home</h3>
+                        <p className="text-gray-600 leading-relaxed mb-4">
+                            Florida’s high humidity creates a unique challenge: your AC isn't just cooling air, it's dehumidifying it.
+                            In homes with block construction or older windows, moisture seeps in, forcing systems to run continuous cycles just to maintain comfort.
+                        </p>
+                        <p className="text-sm font-semibold text-green-700">
+                            <Link href="/calculator?state=florida" className="hover:underline">
+                                See how this compares to a typical Florida home →
+                            </Link>
+                        </p>
+                    </div>
+                )}
             </section>
 
             {/* SECTION 4: INCENTIVES */}
@@ -144,7 +176,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
 
             {/* SECTION 5: SAVING OPPORTUNITIES */}
             <section className="py-24 px-6 lg:px-8 max-w-[900px] mx-auto">
-                <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where {stateData.name} homeowners save</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Where {stateData.name} energy waste happens</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="flex gap-4">
                         <div className="h-10 w-10 shrink-0 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -183,7 +215,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     </p>
                     <Button asChild size="lg" className="rounded-full bg-green-500 hover:bg-green-400 text-gray-900 font-bold px-8 h-12 text-base shadow-lg shadow-green-500/20 border-0">
                         <Link href={`/calculator?state=${stateData.slug}`}>
-                            Check Your {stateData.name} Energy Savings
+                            Analyze Your {stateData.name} Home Energy Model
                         </Link>
                     </Button>
                 </div>

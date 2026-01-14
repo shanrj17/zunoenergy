@@ -50,6 +50,9 @@ export function InteractiveHero() {
                         <p className="text-lg text-slate-600 mb-8 max-w-lg">
                             Don't just read about energy efficiency. Toggle the upgrades on our virtual home to see how much you could save instantly.
                         </p>
+                        <div className="text-sm text-slate-500 bg-slate-50 py-2 px-4 rounded-full inline-block border border-slate-100 mb-8">
+                            ZunoEnergy is an educational tool only. We don’t sell solar or energy plans, and you can see full results without entering an email.
+                        </div>
                         <div className="flex gap-4">
                             <Link
                                 href="/calculator"

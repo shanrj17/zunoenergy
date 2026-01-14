@@ -1,7 +1,12 @@
-"use client"
-
 import { Suspense } from "react"
 import { SmartEnergyCheckup } from "@/components/calculator/SmartEnergyCheckup"
+
+export async function generateMetadata() {
+    return {
+        title: "Home Energy Bill Calculator — Understand Your Energy Costs",
+        description: "Calculate your home energy costs using a free educational tool. No email required. No phone calls. ZunoEnergy does not sell solar or energy plans.",
+    }
+}
 
 export default function CalculatorPage() {
     return (
@@ -11,10 +16,13 @@ export default function CalculatorPage() {
                 <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl text-slate-900 mb-6">
                     Electric Bill Calculator & <span className="text-green-600">Home Audit</span>
                 </h1>
-                <p className="text-xl text-slate-600 leading-relaxed">
-                    A smart, honest energy guide for American homes. Get a personalized savings estimate in under 60 seconds.
+                <p className="text-xl text-slate-600 leading-relaxed mb-4">
+                    A smart, honest energy guide for American homes. See a personalized cost breakdown in under 60 seconds.
                     <span className="block mt-2 text-sm text-slate-400 font-semibold uppercase tracking-wider">No Email Required • 100% Free</span>
                 </p>
+                <div className="text-sm text-slate-500 bg-slate-50 py-2 px-4 rounded-full inline-block border border-slate-100">
+                    ZunoEnergy is an educational tool only. We don’t sell solar or energy plans, and you can see full results without entering an email.
+                </div>
             </div>
 
             {/* Main Tool */}
@@ -27,7 +35,7 @@ export default function CalculatorPage() {
 
                 {/* Methodology Section */}
                 <section className="space-y-6">
-                    <h2 className="text-3xl font-bold text-slate-900">How We Calculate Your Savings</h2>
+                    <h2 className="text-3xl font-bold text-slate-900">How We Analyze Home Energy</h2>
                     <div className="grid md:grid-cols-2 gap-8 text-slate-600">
                         <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                             <h3 className="font-bold text-slate-900 mb-2">Based on DOE Data</h3>
